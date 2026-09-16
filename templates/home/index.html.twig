@@ -2,70 +2,37 @@
 
 {% block body %}
 
-    <h1>Les EPs :</h1>
+    <h2>Les EPs :</h2>
 
 <div class="container py-5">
     <div class="row g-4">
         {% for ep in eps %}
             <div class="col-md-6 col-lg-4">
-                <a class="d-block" href="{{ path('app_album_item', {'id' : ep.id}) }}" style="text-decoration: none">
-                <div class="card h-100 shadow-sm border-0 transition">
-                    <img src="{{ asset(ep.cover)}}" class="card-img-top" alt="{{ ep.name }}" style="height: 300px; object-fit: cover;">
-                    <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ ep.type }}</span>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ ep.name }}</h5>
-                        <p class="card-text text-muted fw-semibold">{{ ep.artist.name }}</p>
-                        <p class="card-text small text-secondary">{{ ep.createdAt | date('d/m/Y') }}</p>
-                        <p class="card-text small text-secondary">{{ ep.tracks|length }} tracks</p>
-                    </div>
-                </div>
-                </a>
+                {% include 'components/album-card.html.twig' with {album:ep} %}
             </div>
         {% endfor %}
     </div>
 </div>
 
-    <h1>Les Albums :</h1>
+    <h2>Les Albums :</h2>
 
     <div class="container py-5">
         <div class="row g-4">
             {% for album in albums %}
                 <div class="col-md-6 col-lg-4">
-                    <a class="d-block" href="{{ path('app_album_item', {'id' : album.id}) }}" style="text-decoration: none">
-                        <div class="card h-100 shadow-sm border-0 transition">
-                            <img src="{{ asset(album.cover)}}" class="card-img-top" alt="{{ album.name }}" style="height: 300px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ album.type }}</span>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ album.name }}</h5>
-                                <p class="card-text text-muted fw-semibold">{{ album.artist.name }}</p>
-                                <p class="card-text small text-secondary">{{ album.createdAt | date('d/m/Y') }}</p>
-                                <p class="card-text small text-secondary">{{ album.tracks|length }} tracks</p>
-                            </div>
-                        </div>
-                    </a>
+                    {% include 'components/album-card.html.twig' with {album:album} %}
                 </div>
             {% endfor %}
         </div>
     </div>
 
-    <h1>Les Singles :</h1>
+    <h2>Les Singles :</h2>
 
     <div class="container py-5">
         <div class="row g-4">
             {% for single in singles %}
                 <div class="col-md-6 col-lg-4">
-                    <a class="d-block" href="{{ path('app_album_item', {'id' : single.id}) }}" style="text-decoration: none">
-                        <div class="card h-100 shadow-sm border-0 transition">
-                            <img src="{{ asset(single.cover)}}" class="card-img-top" alt="{{ single.name }}" style="height: 300px; object-fit: cover;">
-                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ single.type }}</span>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ single.name }}</h5>
-                                <p class="card-text text-muted fw-semibold">{{ single.artist.name }}</p>
-                                <p class="card-text small text-secondary">{{ single.createdAt | date('d/m/Y') }}</p>
-                                <p class="card-text small text-secondary">{{ single.tracks|length }} tracks</p>
-                            </div>
-                        </div>
-                    </a>
+                    {% include 'components/album-card.html.twig' with {album:single} %}
                 </div>
             {% endfor %}
         </div>

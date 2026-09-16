@@ -1,0 +1,12 @@
+<a class="d-block" href="{{ path('app_album_item', {'id' : album.id}) }}" style="text-decoration: none">
+    <div class="card h-100 shadow-sm border-0 transition">
+        <img src="{{ asset(album.cover)}}" class="card-img-top" alt="{{ album.name }}" style="height: 300px; object-fit: cover;">
+        <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ album.type }}</span>
+        <div class="card-body">
+            <h5 class="card-title">{{ album.name }}</h5>
+            <p class="card-text text-muted fw-semibold">{{ album.artist.name }}</p>
+            <p class="card-text small text-secondary">{{ album.createdAt | date('d/m/Y') }}</p>
+            <p class="card-text small text-secondary">{{ album.tracks|length }} tracks</p>
+        </div>
+    </div>
+</a>
