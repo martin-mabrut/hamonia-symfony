@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-12">
+                <h1>Votre profil</h1>
+                <h2>{{ app.user.pseudo }}</h2>
+                <h3>{{ app.user.email }}</h3>
+                <div>
+                    <p><strong>Vos playlists :</strong></p>
+                    {% for playlist in app.user.playlists %}
+                        <p>{{ playlist.name }}</p>
+                    {% endfor %}
+                </div>
+                <div>
+                    <p><strong>Vos streams :</strong></p>
+                    {% for stream in app.user.streams %}
+                        <p>{{ stream.track.name }} le {{ stream.track.createdAt|date('d/m/Y') }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
