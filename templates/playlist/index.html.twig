@@ -3,18 +3,19 @@
 {% block title %}Hello PlaylistController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/martinmabrut/Documents/Informatique et formation/Projets/Simplon/php-jules/symfony/harmonia/src/Controller/PlaylistController.php</code></li>
-        <li>Your template at <code>/Users/martinmabrut/Documents/Informatique et formation/Projets/Simplon/php-jules/symfony/harmonia/templates/playlist/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-12">
+                <h1>{{ playlist.name }}</h1>
+                <h2>{{ playlist.description }}</h2>
+                <h3>Créée le {{ playlist.createdAt|date('d/m/Y') }} par {{ playlist.user.pseudo }}</h3>
+                <div>
+                    <p><strong>Morceaux :</strong></p>
+                    {% for track in playlist.tracks %}
+                        <a href="{{ path('app_track_item', {'id' : track.id}) }}"><p>{{ track.name }}</p></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
