@@ -20,6 +20,10 @@ final class HomeController extends AbstractController
         dump($eps);
         dump($singles);
 
+        //Entity user || null
+        $user = $this->getUser();
+        dump($user);
+
         return $this->render('home/index.html.twig', [
             'albums' => $albums,
             'singles' => $singles,
