@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AlbumController!{% endblock %}
+
+{% block body %}
+    <<div class="container py-5">
+        <div class="row g-4">
+            <div class="col-12">
+                <h1>Les artistes :</h1>
+                {% for artist in artists %}
+                    <p>{{ artist.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>>
+{% endblock %}
+
