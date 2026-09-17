@@ -7,7 +7,7 @@
             <p>{{ track.name }}</p>
             <p>Genre :</p>
             {% for genre in track.genres %}
-                <p>{{ genre.name }}</p>
+                <a href="{{ path('app_genre', {'id' : genre.id}) }}"><p>{{ genre.name }}</p></a>
             {% endfor %}
             <a href="{{ path('app_album_item', {'id' : track.albums.id}) }}"><p> {{ track.albums.name }}</p></a>
 
