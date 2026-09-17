@@ -42,4 +42,23 @@ final class ArtistController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/artist-update/{id}', name: 'app_artist_update')]
+    public function updateArtist(ArtisteRepository $artisteRepository, $id, EntityManagerInterface $entityManager, Request $request): Response
+    {
+
+        $artist = $artisteRepository->find($id);
+
+        $form = $this->createForm(ArtistType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($artist);
+            $entityManager->flush();
+        }
+
+        return $this->render('artist/add.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
