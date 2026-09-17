@@ -22,6 +22,7 @@
                     <a href="{{ path('app_track_item', {'id' : track.id}) }}"><p>{{ track.name }}</p></a>
                 {% endfor %}
             </div>
+            <a href="{{ path('app_add_track', {'id' : album.id}) }}"><button class="btn btn-primary">Ajouter un titre</button></a>
         </div>
     </div>
 {% endblock %}
