@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Track;
 use App\Form\TrackType;
 use App\Repository\AlbumRepository;
+use App\Repository\FavoriteRepository;
 use App\Repository\TrackRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,16 +16,21 @@ use Symfony\Component\Routing\Attribute\Route;
 final class TrackController extends AbstractController
 {
     #[Route('/track/{id}', name: 'app_track_item')]
-    public function index($id, TrackRepository $trackRepository): Response
+    public function index($id, TrackRepository $trackRepository, FavoriteRepository $favoriteRepository): Response
     {
         $track = $trackRepository->find($id);
         if($id === null){
             return $this->redirectToRoute('app_home');
         }
-        dump($track);
+
+        $existingFavorite = $favoriteRepository->findOneBy([
+            'track' => $track,
+            'user' => $this->getUser(),
+        ]);
 
         return $this->render('track/index.html.twig', [
             'track' => $track,
+            'existingFavorite' => $existingFavorite,
         ]);
     }
 
