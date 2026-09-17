@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TooController!{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.biographie) }}
+    {{ form_row(form.country) }}
+
+    <button type="submit">Valider</button>
+    {{ form_end(form) }}
+{% endblock %}
