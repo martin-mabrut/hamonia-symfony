@@ -1,10 +1,29 @@
 import './stimulus_bootstrap.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
 import './styles/app.css';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+const bouton = document.getElementById("bouton");
+async function toggleFavorite() {
+
+    const id = bouton.dataset.trackId;
+    const url = `/toggle-favorite/${id}`;
+    try {
+        const reponse = await fetch(url);
+        if (!reponse.ok) {
+            throw new Error(`Statut de réponse : ${reponse.status}`);
+        }
+
+        const resultat = await reponse.json();
+        console.log(resultat);
+        return resultat;
+
+        } catch (erreur) {
+            console.error(erreur.message);
+        }
+    }
+
+
+if(bouton) {
+bouton.addEventListener("click", (e) => {
+    toggleFavorite()
+});
+}

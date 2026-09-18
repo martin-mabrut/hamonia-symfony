@@ -11,11 +11,11 @@
             {% endfor %}
             <a href="{{ path('app_album_item', {'id' : track.albums.id}) }}"><p> {{ track.albums.name }}</p></a>
 
-            {% if existingFavorite is null %}
-                <a href="{{ path('app_toggle_favorite', {'id' : track.id}) }}"><button class="btn btn-secondary">Ajouter aux favoris</button></a>
-            {% else %}
-                <a href="{{ path('app_toggle_favorite', {'id' : track.id}) }}"><button class="btn btn-success">Supprimer des favoris</button></a>
-            {% endif %}
+{#            {% if existingFavorite is null %}#}
+{#                <a href="{{ path('app_toggle_favorite', {'id' : track.id}) }}">#}<button class="btn btn-secondary" id="bouton" data-track-id="{{ track.id }}">Ajouter aux favoris</button>{#</a>#}
+{#            {% else %}#}
+{#                <a href="{{ path('app_toggle_favorite', {'id' : track.id}) }}"><button class="btn btn-success">Supprimer des favoris</button></a>#}
+{#            {% endif %}#}
         </div>
     </div>
 </div>

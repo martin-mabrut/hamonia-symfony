@@ -7,6 +7,7 @@ use App\Repository\FavoriteRepository;
 use App\Repository\TrackRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -32,11 +33,16 @@ final class FavoriteController extends AbstractController
             $entityManager->persist($favorite);
             $entityManager->flush();
 
+            return $this->json(['status du morceau'=> 'en favoris']);
+
         } else {
             $entityManager->remove($existingFavorite);
             $entityManager->flush();
+
+            return $this->json(['status du morceau'=> 'pas en favoris']);
         }
 
-        return $this->redirectToRoute('app_track_item', ['id' => $id]);
+//        return $this->redirectToRoute('app_track_item', ['id' => $id]);
+
     }
 }
