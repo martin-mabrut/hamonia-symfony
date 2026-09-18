@@ -2,39 +2,49 @@
 
 {% block body %}
 
-    <h2>Les EPs :</h2>
-
 <div class="container py-5">
     <div class="row g-4">
-        {% for ep in eps %}
-            <div class="col-md-6 col-lg-4">
-                {% include 'components/album-card.html.twig' with {album:ep} %}
+        <div class="col-6">
+                <div>
+                    <a href="{{ path('app_add_album') }}"><button class="btn btn-primary">Ajouter un album</button></a>
+                </div>
+                <h2>Les EPs :</h2>
+
+
+            <div class="container py-5">
+                <div class="row g-4">
+                    {% for ep in eps %}
+                        <div class="col-md-6 col-lg-4">
+                            {% include 'components/album-card.html.twig' with {album:ep} %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        {% endfor %}
+
+                <h2>Les Albums :</h2>
+
+                <div class="container py-5">
+                    <div class="row g-4">
+                        {% for album in albums %}
+                            <div class="col-md-6 col-lg-4">
+                                {% include 'components/album-card.html.twig' with {album:album} %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <h2>Les Singles :</h2>
+
+                <div class="container py-5">
+                    <div class="row g-4">
+                        {% for single in singles %}
+                            <div class="col-md-6 col-lg-4">
+                                {% include 'components/album-card.html.twig' with {album:single} %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
     </div>
 </div>
-
-    <h2>Les Albums :</h2>
-
-    <div class="container py-5">
-        <div class="row g-4">
-            {% for album in albums %}
-                <div class="col-md-6 col-lg-4">
-                    {% include 'components/album-card.html.twig' with {album:album} %}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <h2>Les Singles :</h2>
-
-    <div class="container py-5">
-        <div class="row g-4">
-            {% for single in singles %}
-                <div class="col-md-6 col-lg-4">
-                    {% include 'components/album-card.html.twig' with {album:single} %}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
 {% endblock %}
