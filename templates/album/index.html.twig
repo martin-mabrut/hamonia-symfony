@@ -7,7 +7,11 @@
         <div class="row g-4">
             <div class="col-6">
                 <div class="card h-100 shadow-sm border-0 transition">
-                    <img src="{{ asset(album.cover)}}" class="card-img-top" alt="{{ album.name }}">
+
+                    {% if album.cover !== null %}
+                        <img src="{{ asset(album.cover)}}" class="card-img-top" alt="{{ album.name }}">
+                    {% endif %}
+
                     <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ album.type }}</span>
                     <div class="card-body">
                         <h5 class="card-title">{{ album.name }}</h5>
