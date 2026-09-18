@@ -14,12 +14,23 @@ async function toggleFavorite() {
 
         const resultat = await reponse.json();
         console.log(resultat);
+
+        if(bouton.classList.contains("btn-secondary")){
+            bouton.classList.remove("btn-secondary");
+            bouton.classList.add("btn-success");
+            bouton.innerHTML= "Supprimer des favoris";
+        } else {
+            bouton.classList.remove("btn-success");
+            bouton.classList.add("btn-secondary");
+            bouton.innerHTML = "Ajouter aux favoris";
+        }
+
         return resultat;
 
         } catch (erreur) {
             console.error(erreur.message);
         }
-    }
+}
 
 
 if(bouton) {
